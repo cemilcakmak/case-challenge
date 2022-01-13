@@ -5,6 +5,16 @@ const app = express();
 
 const connectDB = require('./db/connect');
 
+const endpointIsNotFound = require('./middleware/not-found');
+
+app.use(express.json());
+
+app.get('/', (req, res) => {
+    res.send('Initial Endpoint For Getir Case Study Challenge.');
+});
+
+app.use(endpointIsNotFound);
+
 const port = process.env.PORT || 4000;
 const start = async () => {
     try {
@@ -16,3 +26,4 @@ const start = async () => {
     }
 }
 
+start();
