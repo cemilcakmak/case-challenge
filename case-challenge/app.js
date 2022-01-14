@@ -5,6 +5,10 @@ const app = express();
 
 const connectDB = require('./db/connect');
 
+// Getir Case Challenge Router
+const getirChallengeRouter = require('./routes/router');
+
+// Exception Handling
 const endpointIsNotFound = require('./middleware/not-found');
 
 app.use(express.json());
@@ -12,6 +16,8 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send('Initial Endpoint For Getir Case Study Challenge.');
 });
+
+getirChallengeRouter(app);
 
 app.use(endpointIsNotFound);
 
