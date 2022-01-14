@@ -6,22 +6,38 @@ class KeysService {
     }
 
     async getKeysResponse(requestPayload) {
-        let keys = await Keys.find();
-        console.log(keys);
+        let dbResult = await Keys.aggregate([
+            {
+                $match: {
+                    createdAt: {
+                        $gte: new Date(requestPayload.startDate),
+                        $lte: new Date(requestPayload.endDate)
+            }}},
+            {
+                $project: {
+                    key: "$key",
+                    createdAt: "$createdAt",
+                    totalCount: { "$sum": "$counts" }
+            }},
+            {
+                $match: {
+                    totalCount: {
+                        $gte: requestPayload.minCount,
+                        $lte: requestPayload.maxCount
+            }}}]);
+
+        if (dbResult.length == 0) {
+            return [];
+        }
+        let keys = dbResult.map(entity => {
+            return {
+                key: entity.key,
+                createdAt: entity.createdAt,
+                totalCount: entity.totalCount
+        }});
+                
+        return keys;
     }
 
-    /*
-    {
-            key: {
-                $gt: requestPayload.minCount,
-                $lt: requestPayload.maxCount
-            },
-            createdAt: {
-                $gt: new Date(requestPayload.startDate).toISOString(),
-                $lt: new Date(requestPayload.endDate).toISOString()
-            }
-        }
-        */
 }
-
 module.exports.KeysService = KeysService;
