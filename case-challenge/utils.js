@@ -40,7 +40,6 @@ class Utils {
 
         return true;
     }
-
 }
 
 module.exports.Utils = Utils;
