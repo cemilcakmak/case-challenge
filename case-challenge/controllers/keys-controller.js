@@ -1,6 +1,8 @@
 const { Utils } = require('../utils');
 
-class GetirChallengeController {
+const { KeysService } = require('../services/keys-service');
+
+class KeysController {
     constructor(opts) {
     }
 
@@ -26,16 +28,17 @@ class GetirChallengeController {
             });
             if (!areDateParametersValid) {
                 return res.status(500).json({ msg: 'Date formats are not supported.'});
-            } 
-
+            }
             
-            console.log(requestPayload);
+            let keysService = new KeysService();
+            let responseObject = await keysService.getKeysResponse(requestPayload);
+
+            res.status(200).send(JSON.stringify(responseObject));
         } catch (error) {
             console.log(error);
         }
-        
     };
 
 }
 
-module.exports.GetirChallengeController = GetirChallengeController;
+module.exports.KeysController = KeysController;
