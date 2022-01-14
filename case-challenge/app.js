@@ -6,7 +6,7 @@ const app = express();
 const connectDB = require('./db/connect');
 
 // Getir Case Challenge Router
-const getirChallengeRouter = require('./routes/router');
+const keysRouter = require('./routes/keys-router');
 
 // Exception Handling
 const endpointIsNotFound = require('./middleware/not-found');
@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
     res.send('Initial Endpoint For Getir Case Study Challenge.');
 });
 
-getirChallengeRouter(app);
+keysRouter(app);
 
 app.use(endpointIsNotFound);
 
