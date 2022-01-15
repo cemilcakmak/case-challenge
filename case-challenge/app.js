@@ -18,7 +18,7 @@ app.use(endpointIsNotFound);
 const port = process.env.PORT || 4000;
 const start = async () => {
     try {
-        await connectDB(process.env.MONGO_URI);
+        await connectDB('mongodb+srv://challengeUser:WUMglwNBaydH8Yvu@challenge-xzwqd.mongodb.net/getir-case-study?retryWrites=true');
         app.listen(port, console.log(`Server is listening at port ${port}`));
     } catch (error) {
         console.log(error);
