@@ -1,5 +1,8 @@
-const { Utils } = require('../utils');
+// npm packages
+const StatusCodes = require('http-status-codes')
 
+// project classes
+const { Utils } = require('../utils');
 const { KeysService } = require('../services/keys-service');
 
 class KeysController {
@@ -18,7 +21,7 @@ class KeysController {
                 maxCount: requestPayload.maxCount
             });
             if (!isRequestValid) {
-                return res.status(400).json({ msg: 'Bad Request: Request Parameters are not assigned.' });
+                return res.status(StatusCodes.BAD_REQUEST).json({ msg: 'Bad Request: Request Parameters are not assigned.' });
             }
 
             // Check if date values are match with YYYY-MM-DD format
@@ -27,7 +30,7 @@ class KeysController {
                 endDate: requestPayload.endDate
             });
             if (!areDateParametersValid) {
-                return res.status(400).json({ msg: 'Bad Request: Date formats are not supported.'});
+                return res.status(StatusCodes.BAD_REQUEST).json({ msg: 'Bad Request: Date formats are not supported.'});
             }
             
             let keysService = new KeysService();
@@ -38,9 +41,9 @@ class KeysController {
                 msg: 'Success',
                 keys
             }
-            res.status(200).send(response);
+            res.status(StatusCodes.OK).send(response);
         } catch (error) {
-            res.status(500).json({ msg: 'Internal Server Error: Something went wrong.' });
+            res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: 'Internal Server Error: Something went wrong.' });
         }
     };
 
