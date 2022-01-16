@@ -11,13 +11,6 @@ Deliverables
 instructions if there is any project specific configurations needed to run the project.
 <br>● The public endpoint URL of the deployed API which is available for testing.
 
-<b>Worth Highlighting</b>
-<br>We expect these requirements can be delivered in 3 to 6 hours. However, it is not a speed
-test. Take your time! Your feedback on how much actual time you were needed to deliver
-the task will be very helpful but will not be used for the evaluation.
-You are free to use any libraries to deliver the needed functionality, but be prepared to
-explain other solutions that you would have implemented if you have more time.
-
 <b>Crucial Points</b>
 <br>● Delivering a Working RESTful API.
 <br>● Clean and Production Ready Code
@@ -25,14 +18,6 @@ explain other solutions that you would have implemented if you have more time.
 <br>● Comments and Documentation
 <br>● Unit and/or Integration Tests (Jest is preferable but Mocha also works)
 <br>● Avoid Over Engineering
-
-Good luck with this assignment! Try to make good use of this task to demonstrate and
-show off your coding skills. If you have any questions, don’t hesitate to ask your contact
-person within Getir.
-
-<b>Required Information</b>
-<br>MongoDB URI:
-<br>mongodb+srv://challengeUser:WUMglwNBaydH8Yvu@challenge-xzwqd.mongodb.net/getircase-study?retryWrites=true
 
 <b>Request Payload</b>
 <br>The request payload will include a JSON with 4 fields.
