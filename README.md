@@ -65,3 +65,44 @@ array in the document.
   ]
 }
 ~~~
+
+<br><b>DESCRIPTION</b><br>
+<br>The project has been deployed into Heroku.
+<br>https://getircasechallenge-cemilcakmak.herokuapp.com/
+Requests should be send into: 
+~~~ 
+https://getircasechallenge-cemilcakmak.herokuapp.com/challenge/get-keys/
+~~~
+
+If project will be run in local, requests should be send into:
+~~~ 
+localhost:4000/challenge/get-keys/
+~~~
+
+To run project:
+~~~ 
+nodemon app.js
+~~~
+
+To run tests
+~~~ 
+npm test
+~~~
+
+Sample request is written above, users can get several codes and message in response:
+<br>- 0: Success
+<br>- 1: No Data Found
+<br>- 2: Database Error
+<br>- 3: Bad Request. Invalid Parameters
+<br>- 4: Internal Server Error
+
+There are 7 packages in the project:
+<br><b>__test__ </b>: Contains 4 different test cases, used Jest and Supertest
+<br><b>controllers</b>: Is a simple controller class, gets the request throught router, checks whether parameters are valid to process or not.
+<br><b>db</b>: It is not good to use db operations in app or routers therefore seperated it.
+<br><b>middleware</b>: Contains middleware exceptions. There is only 1 exception for now, that is notFound. If users send their requests except /challenge/get-keys
+<br><b>models</b>: Contains schemas for mongodb operations.
+<br><b>routes</b>: Contains getir-challenge router. Thought endpoints should not be in app.js therefore created this layer.
+<br><b>services </b>: Handle HTTP Requests operations. If request is valid to be processed, service classes takes and send it as mongodb query, get result and return to controller.
+
+
