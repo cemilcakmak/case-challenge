@@ -1,5 +1,4 @@
 # Technical Phase - Case Challenge 
-
 <br><b>Requirements</b>
 <br>● The code should be written in Node.js using express framework
 <br>● The endpoint should just handle HTTP POST requests.
